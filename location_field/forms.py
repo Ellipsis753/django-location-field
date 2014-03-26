@@ -1,5 +1,6 @@
 from django.forms import fields
-from django.contrib.gis.geos import Point
+#Commented out below from this fork so that a spatial database is not needed.
+#from django.contrib.gis.geos import Point
 from location_field.widgets import LocationWidget
 
 
@@ -26,12 +27,11 @@ class PlainLocationField(fields.CharField):
 
         super(PlainLocationField, self).__init__(*args, **dwargs)
 
-
-class LocationField(PlainLocationField):
-    def clean(self, value):
-        if not value:
-            return None
-
-        lat, lng = value.split(',')
-        return Point(float(lng), float(lat))
-
+#Commented out below from this fork so that a spatial database is not needed.
+#class LocationField(PlainLocationField):
+#    def clean(self, value):
+#        if not value:
+#            return None
+#
+#        lat, lng = value.split(',')
+#        return Point(float(lng), float(lat))

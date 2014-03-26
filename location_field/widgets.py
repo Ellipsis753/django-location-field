@@ -13,7 +13,10 @@ class LocationWidget(widgets.TextInput):
     def render(self, name, value, attrs=None):
         if value is not None:
             if isinstance(value, basestring):
-                lat, lng = value.split(',')
+                try:
+                    lat, lng = value.split(',')
+                except ValueError:
+                    lat, lng = (50.820339, -0.138702)
             else:
                 lng = value.x
                 lat = value.y
@@ -30,9 +33,12 @@ class LocationWidget(widgets.TextInput):
         else:
             prefix = name[:name.rindex('-') + 1]
 
-        based_fields = ','.join(
-            map(lambda f: '#id_' + prefix + f.name, self.based_fields))
-
+        if self.based_fields is not None:
+            based_fields = ','.join(
+                map(lambda f: '#id_' + prefix + f.name, self.based_fields))
+        else:
+            based_fields = ''
+        
         attrs = attrs or {}
         attrs['data-location-widget'] = name
         attrs['data-based-fields'] = based_fields

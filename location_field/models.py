@@ -1,4 +1,5 @@
-from django.contrib.gis.db.models import PointField
+#Commented out below from this fork so that a spatial database is not needed.
+#from django.contrib.gis.db.models import PointField
 from django.db.models import CharField
 
 from location_field import forms
@@ -19,15 +20,15 @@ class BaseLocationField(object):
             default=self._default,
             **kwargs)
 
-
-class LocationField(BaseLocationField, PointField):
-    formfield_class = forms.LocationField
-
-    def __init__(self, based_fields=None, zoom=None, suffix='', *args, **kwargs):
-        super(LocationField, self).__init__(based_fields=based_fields,
-                                            zoom=zoom, suffix=suffix, *args, **kwargs)
-
-        PointField.__init__(self, *args, **kwargs)
+#Commented out below from this fork so that a spatial database is not needed.
+#class LocationField(BaseLocationField, PointField):
+#    formfield_class = forms.LocationField
+#
+#    def __init__(self, based_fields=None, zoom=None, suffix='', *args, **kwargs):
+#        super(LocationField, self).__init__(based_fields=based_fields,
+#                                            zoom=zoom, suffix=suffix, *args, **kwargs)
+#
+#        PointField.__init__(self, *args, **kwargs)
 
 
 class PlainLocationField(BaseLocationField, CharField):
