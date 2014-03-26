@@ -1,4 +1,10 @@
-**Django Location Field**
+**Django Location Field Plain**
+
+This fork removes functionality and LocationField() from the original to
+allow the use of PlainLocationField() without needing a Spatial Database.
+It will continue in parallel until hopefully it can eventually be merged
+back into the original.
+
 
 Allows users to input locations based on latitude and longitude, using a
 Google maps widget.
